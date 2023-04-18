@@ -1,0 +1,21 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.form {
+  max-width: 20%;
+}
+
+.center{
+  vertical-align: center;
+  text-align: center;
+}
+
+.groupby-table {
+  max-width: 30%;
+}

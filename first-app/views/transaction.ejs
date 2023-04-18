@@ -1,0 +1,75 @@
+<h1> Transactions for <%= user.username %> </h1>
+
+<div class="row">
+    <div class="col">
+        <p>Here are your transactions!</p>
+        <div class="mb-3">
+        <table class="table table-bordered">
+            <tr>
+                <th class="center"><button onclick="location.href='/transactions/groupByCategory'" class="btn btn-primary">Group by Category</button></th>
+                <th class="center"><button onclick="location.href='/transactions?sortBy=category'" class="btn btn-primary">Sort by Category</button></th>
+                <th class="center"><button onclick="location.href='/transactions?sortBy=amount'" class="btn btn-primary">Sort by Amount</button></th>
+                <th class="center"><button onclick="location.href='/transactions?sortBy=description'" class="btn btn-primary">Sort by Description</button></th>
+                <th class="center"><button onclick="location.href='/transactions?sortBy=date'" class="btn btn-primary">Sort by Date</button></th>
+            </tr>
+        </table>
+
+        </div>
+
+        <p class="m-2">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>description</th>
+                        <th>amount</th>
+                        <th>category</th>
+                        <th>date</th>
+                        <th>delete</th>
+                        <th>edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% transactions.forEach(transaction => { %>
+                        <tr>
+                            <td><%= transaction.description %></td>
+                            <td><%= transaction.amount %></td>
+                            <td><%= transaction.category %></td>
+                            <td><%= new Date(transaction.date).toDateString() %></td>
+                            <td>
+
+                                <a href="/transactions/delete/<%= transaction._id %>"><i class="bi bi-trash"></i></a>
+                                
+                            </td>
+                            <td>
+                                <a href="/transactions/edit/<%= transaction._id %>'"><i class="bi bi-pencil-square"></i></a>
+                            </td>                        
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </p>
+    </div>
+    <div class="row">
+        <div class="col form">
+            <h2>Add a New Transaction</h2>
+            <form action="/transactions/new" method="POST">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="description" id="description" placeholder='description' required>
+                </div>
+                <div class="mb-3">
+                    <input type="number" step="0.01" class="form-control" name="amount" id="amount" placeholder='amount' required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="category" id="category" placeholder='category' required>
+                </div>
+                <div class="mb-3">
+                    <input type="date" class="form-control" name="date" id="date" placeholder='date' required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Transaction</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+

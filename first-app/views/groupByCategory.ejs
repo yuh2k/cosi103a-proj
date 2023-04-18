@@ -1,0 +1,23 @@
+<h1> Grouped Transactions by Category </h1>
+<li><a href="/transaction">Transaction Table</a></li>
+<br>
+    <div class="col groupby-table">
+        
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>category</th>
+                    <th>amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(result => { %>
+                    <tr>
+                        <td><%= result._id %></td>
+                        <td><%= result.totalAmount %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
